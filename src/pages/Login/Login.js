@@ -23,23 +23,13 @@ const Login = ({ dispatch }) => {
   return register ? (
     <SignUp setRegister={setRegister} dispatch={dispatch} />
   ) : (
-    <section className="container h-screen mx-auto flex">
+    <section className="grid container h-screen place-items-center">
       <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
-        <h1 className="text-6xl font-bold">Login</h1>
-        <p className="mt-6">
-          {" "}
-          Don't have an account ?{" "}
-          <span
-            className="cursor-pointer underline"
-            onClick={() => setRegister(true)}
-          >
-            Sign Up
-          </span>{" "}
-        </p>
+        <h1 className="text-6xl font-bold text-center">Login</h1>
         <form onSubmit={handleLogin}>
           <label className="block mt-6"> Email</label>
           <input
-            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900"
+            className="w-full p-4 placeholder-gray-400 text-gray-700 bg-white text-lg border-0 border-b-2 border-gray-400 focus:ring-0 focus:border-gray-900 position:relative left:50px"
             type="text"
             onChange={(e) => setEmail(e.target.value)}
             name="email"
@@ -54,15 +44,26 @@ const Login = ({ dispatch }) => {
             autoComplete="password"
           />
 
-          <div className="mt-6">
+          <div className="mt-6 text-center">
             <button
               type="submit"
               disabled={!email || !password}
-              className="mx-auto mt-4 py-4 px-16 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+              className="content-center mx-auto mt-4 py-4 px-16 font-semibold rounded-lg shadow-md bg-gray-900 text-white border hover:border-gray-900 hover:text-gray-900 hover:bg-white focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Login
             </button>
           </div>
+          
+        <p className="mt-6 text-center">
+          {" "}
+          Don't have an account ?{" "}
+          <span
+            className="cursor-pointer underline palce-item-center"
+            onClick={() => setRegister(true)}
+          >
+            Sign Up
+          </span>{" "}
+        </p>
         </form>
       </div>
     </section>

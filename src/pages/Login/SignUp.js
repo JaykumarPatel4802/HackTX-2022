@@ -21,19 +21,9 @@ const SignUp = ({ setRegister, dispatch }) => {
 
   return (
     <>
-      <section className="container h-screen mx-auto flex">
+      <section className="grid place-items-center container h-screen mx-auto">
         <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
           <h1 className="text-6xl font-bold">Sign Up</h1>
-          <p className="mt-4">
-            {" "}
-            Already have an account ?{" "}
-            <span
-              className="cursor-pointer underline"
-              onClick={() => setRegister(false)}
-            >
-              Login
-            </span>{" "}
-          </p>
           <form onSubmit={handleSignup}>
             <label className="block mt-6"> Name</label>
             <input
@@ -62,7 +52,7 @@ const SignUp = ({ setRegister, dispatch }) => {
               autoComplete="password"
             />
 
-            <div className="mt-6">
+            <div className="mt-6 text-center">
               <button
                 type="submit"
                 disabled={!name || !email || !password}
@@ -71,6 +61,16 @@ const SignUp = ({ setRegister, dispatch }) => {
                 Sign Up
               </button>
             </div>
+            <p className="mt-4 text-center">
+            {" "}
+            Already have an account ?{" "}
+            <span
+              className="cursor-pointer underline"
+              onClick={() => setRegister(false)}
+            >
+              Login
+            </span>{" "}
+          </p>
           </form>
         </div>
       </section>

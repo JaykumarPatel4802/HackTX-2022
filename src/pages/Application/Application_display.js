@@ -2,9 +2,9 @@ import api from "../../api/api";
 import { Server } from "../../utils/config";
 import { deleteButton } from "../icons";
 
-const TodoItem = ({ item, setStale }) => {
+const Application_display = ({ item, setStale }) => {/*
   const handleComplete = async (e, item) => {
-    console.log("Marking Todo as complete");
+    console.log("Marking as complete");
     let data = {
       isComplete: !item["isComplete"],
     };
@@ -57,7 +57,7 @@ const TodoItem = ({ item, setStale }) => {
         {deleteButton}
       </button>
     </li>
-  );
+  );*/
 };
 
-export default TodoItem;
+export default Application_display;
