@@ -190,37 +190,8 @@ const Header = (props) => {
         {/* ------------------------------------------- */}
         {/* Profile Dropdown */}
         {/* ------------------------------------------- */}
-        <Box
-          sx={{
-            width: "1px",
-            backgroundColor: "rgba(0,0,0,0.1)",
-            height: "25px",
-            ml: 1,
-          }}
-        ></Box>
-        <Button
-          aria-label="menu"
-          color="inherit"
-          aria-controls="profile-menu"
-          aria-haspopup="true"
-          onClick={handleClick4}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Avatar
-              src={userimg}
-              alt={userimg}
-              sx={{
-                width: "30px",
-                height: "30px",
-              }}
-            />
-          </Box>
-        </Button>
+        
+        
         <Menu
           id="profile-menu"
           anchorEl={anchorEl4}

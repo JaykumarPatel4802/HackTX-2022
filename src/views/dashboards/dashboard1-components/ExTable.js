@@ -19,9 +19,14 @@ const getBackgroundColor = (status) => {
       color = 'red';
   } else if (status  === "Applied") {
       color = 'orange';
-  } else if (status  === "Wishlist") {
-      color = 'green';
+  } else if (status  === "Not Applied") {
+      color = 'gray';
+  }else if (status === "OA"){
+    color = 'yellow'
   }
+ else if (status === "Offer"){
+  color = 'blue'
+}
   return color;
 };
 
@@ -61,7 +66,8 @@ const ExTable = () => {
 fetch("localhost:5000/get_documents/email").then((res) =>
           res.json().then((data) => {
               // Setting a data from api
-              setdata(data["documents"]);
+              console.log(data);
+              setdata(data);
           })
       );  
 
@@ -102,7 +108,7 @@ console.log(applications);
       </TableHead>
       <TableBody>
         {applications.map((application) => (
-          <TableRow key={application.name}>
+          <TableRow key={application}>
             <TableCell>
               <Box
                 sx={{

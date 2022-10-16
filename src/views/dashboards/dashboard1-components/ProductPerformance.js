@@ -50,23 +50,7 @@ const ProductPerformance = () => {
               },
             }}
           >
-            <FormControl variant="standard" sx={{ minWidth: 120 }}>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={age}
-                onChange={handleChange}
-                label="Age"
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Applied</MenuItem>
-                <MenuItem value={20}>Accepted</MenuItem>
-                <MenuItem value={30}>Rejected</MenuItem>
-                <MenuItem value={30}>Wishlist</MenuItem>
-              </Select>
-            </FormControl>
+            
           </Box>
         </Box>
         <Box

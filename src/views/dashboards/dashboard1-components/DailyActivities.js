@@ -97,13 +97,7 @@ const DailyActivities = (props) => {
               marginLeft: "auto",
             }}
           >
-            <IconButton
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <MoreVertOutlinedIcon />
-            </IconButton>
+            
             <Menu
               id="long-menu"
               MenuListProps={{
