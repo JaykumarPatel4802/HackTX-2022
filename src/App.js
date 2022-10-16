@@ -3,26 +3,18 @@ import { BrowserRouter, Navigate, Route, Routes, useRoutes } from "react-router-
 import { ThemeProvider } from "@material-ui/core";
 import {baseTheme} from './assets/global/Theme-variable'
 import Themeroutes from "./routes/Router";
-import Login from "./pages/Login/Login";
+
 import { useGetUser } from "./hooks";
 import FullLayout from "./layouts/FullLayout/FullLayout";
+import { Dashboard } from "@material-ui/icons";
 const App = () => {
-  const routing = useRoutes(Themeroutes);
-  const theme = baseTheme;
+  
   const [{ user, isLoading, isError }, dispatch] = useGetUser();
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/dashboard">
-          {user ? <FullLayout user={user} dispatch={dispatch} /> : <Navigate to="/login" />}
-        </Route>
-        <Route path="/login">
-          {user ? <Navigate to="/dashboard" /> : <Login dispatch={dispatch}/>}
-        </Route>
-        <Route exact path="/">
-          <Login/>
-        </Route>
-        
+      <Route path="/dashboard" element={<FullLayout/>} />
+      {/* <Route path="/" element={<Login/>} /> */}
       </Routes>
     </BrowserRouter>
   );

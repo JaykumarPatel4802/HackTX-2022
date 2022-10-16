@@ -12,7 +12,7 @@ import {
 import ExTable from "./ExTable";
 
 const ProductPerformance = () => {
-  const [age, setAge] = React.useState("10");
+  const [age, setAge] = React.useState("'");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -37,7 +37,7 @@ const ProductPerformance = () => {
               }}
               gutterBottom
             >
-              Deadlines Approaching
+              Applications
             </Typography>
           </Box>
 
@@ -61,9 +61,10 @@ const ProductPerformance = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>March 2021</MenuItem>
-                <MenuItem value={20}>April 2021</MenuItem>
-                <MenuItem value={30}>Jun 2021</MenuItem>
+                <MenuItem value={10}>Applied</MenuItem>
+                <MenuItem value={20}>Accepted</MenuItem>
+                <MenuItem value={30}>Rejected</MenuItem>
+                <MenuItem value={30}>Wishlist</MenuItem>
               </Select>
             </FormControl>
           </Box>

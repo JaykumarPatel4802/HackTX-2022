@@ -39,7 +39,8 @@ const ThemeRoutes = [
       { path: "/form-elements/checkbox", element: <ExCheckbox /> },
       { path: "/form-elements/radio", element: <ExRadio /> },
       { path: "/form-elements/slider", element: <ExSlider /> },
-      { path: "/form-elements/switch", element: <ExSwitch /> },
+      { path: "/form-elements/switch", element: <ExSwitch /> }
+      ,
     ],
   },
 ];
