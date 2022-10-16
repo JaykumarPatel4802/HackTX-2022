@@ -5,18 +5,16 @@ import {baseTheme} from './assets/global/Theme-variable'
 import Themeroutes from "./routes/Router";
 
 import { useGetUser } from "./hooks";
-import FullLayout from "./layouts/FullLayout/FullLayout";
-import { Dashboard } from "@material-ui/icons";
+
 const App = () => {
   
   const [{ user, isLoading, isError }, dispatch] = useGetUser();
+  const routing = useRoutes(Themeroutes);
+  const theme = baseTheme;
   return (
-    <BrowserRouter>
-      <Routes>
-      <Route path="/dashboard" element={<FullLayout/>} />
-      {/* <Route path="/" element={<Login/>} /> */}
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+    {routing}
+  </ThemeProvider>
   );
 };
 

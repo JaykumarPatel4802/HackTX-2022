@@ -1,16 +1,20 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-
+import { HashRouter } from "react-router-dom/dist";
 import {BrowserRouter as Router} from 'react-router-dom';
 
 //import reportWebVitals from './reportWebVitals';
-import Spinner from "./views/Spinner/Spinner";
 
+import Spinner from "./views/Spinner/Spinner";
+ReactDOM.render(
   
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+    <Suspense fallback={<Spinner />}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Suspense>,
+  document.getElementById("root") 
 );
 
 
