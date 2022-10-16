@@ -7,7 +7,6 @@ import AddToPhotosOutlinedIcon from "@material-ui/icons/AddToPhotosOutlined";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Settings from "@material-ui/icons/Settings";
 import Logout from "@material-ui/icons/Logout";
-import { useState, useEffect } from "react";
 
 
 import {
@@ -33,7 +32,7 @@ const Header = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openApplication, setOpenApplication] = React.useState(false);
   const handleOpenApplication = () => setOpenApplication(true);
-  const handleClosepApplication= () => setOpenApplication(false);
+  const handleClosepApplicatoin= () => setOpenApplication(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,30 +65,6 @@ const Header = (props) => {
     setAnchorEl5(null);
   };
 
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
-  const [datetime, setDate] = useState("");
-  const [status, setStatus] = useState("");
-  const sleep = ms => new Promise( resolve => setTimeout(resolve, ms) );
-  const addDocument = () => {
-    // handle api call
-    let post_url = "/create_document/email/"+name+"/"+status+"/"+link+"/"+datetime;
-    console.log("post_url");
-    console.log(name);
-    console.log(status);
-    console.log(link);
-    console.log(datetime);
-    console.log(post_url);
-    fetch(post_url).then((res) =>
-          res.json().then((data) => {
-              // Setting a data from api
-              // setdata(data["documents"]);
-              console.log(data);
-          })
-      );
-    handleClosepApplication();  
-  }
-
   return (
     <AppBar sx={props.sx} elevation={0} className={props.customClass}>
       <Toolbar>
@@ -105,7 +80,7 @@ const Header = (props) => {
         </IconButton>
         <Modal
         open={openApplication}
-        // onClose={handleClosepApplication}
+        onClose={handleClosepApplicatoin}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         disableScrollLock>
@@ -115,8 +90,8 @@ const Header = (props) => {
                     alignItems: "center",
                     maxWidth: (500),
                     minWidth: (500),
-                    maxHeight: (600),
-                    minHeight: (600),
+                    maxHeight: (300),
+                    minHeight: (300),
                     top: 0, left: 0, 
                     right: 0, bottom: 0, 
                     bgcolor: 'background.paper',
@@ -138,21 +113,21 @@ const Header = (props) => {
                   </Typography>
                   </Grid>
                   <Grid item xs={2} sx={{display: 'flex', justifyContent: 'center', mt:(5)}}>
-                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Company Name" variant="outlined" onChange={(e) => {setName(e.target.value)}} />
+                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Company Name" variant="outlined" />
                   </Grid>
                   <Grid item xs={2} sx={{display: 'flex', justifyContent: 'center', mt:(1)}}>
-                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Company Link" variant="outlined" onChange={(e) => {setLink(e.target.value)}}/>
+                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Company Link" variant="outlined" />
                   </Grid>
                   <Grid item xs={2} sx={{display: 'flex', justifyContent: 'center', mt:(1)}}>
-                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Deadline" variant="outlined" onChange={(e) => {setDate(e.target.value)}}/>
+                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Deadline" variant="outlined" />
                   </Grid>
                   <Grid item xs={2} sx={{display: 'flex', justifyContent: 'center', mt:(1)}}>
-                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Status" variant="outlined" style = {{width: 100}} onChange={(e) => {setStatus(e.target.value)}}/>
+                      <TextField sx={{ minWidth: (250), mt: (3) }} id="outlined-basic" label="Status" variant="outlined" style = {{width: 100}}/>
                   </Grid>
                   <Grid item xs={2} sx={{
                             position:"flex" , justifyContent: 'center', alignItems: "center" ,mt: (6)
                         }}>
-                            <Button onClick={() => addDocument()} variant="contained" size="small" color="primary" sx={{
+                            <Button href="/"  variant="contained" size="small" color="primary" sx={{
                                 borderRadius: 0,
                                 pt:(2),
                                 pb: (2),
@@ -167,7 +142,7 @@ const Header = (props) => {
           </Grid>
           </Box>
         </Modal>
-        {/* <Menu
+        <Menu
           id="dd-menu"
           anchorEl={anchorEl5}
           keepMounted
@@ -201,7 +176,7 @@ const Header = (props) => {
         
         
          
-        </Menu> */}
+        </Menu>
         <Box flexGrow={1} />
 
         {/* ------------------------------------------- */}
@@ -215,8 +190,37 @@ const Header = (props) => {
         {/* ------------------------------------------- */}
         {/* Profile Dropdown */}
         {/* ------------------------------------------- */}
-        
-        
+        <Box
+          sx={{
+            width: "1px",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            height: "25px",
+            ml: 1,
+          }}
+        ></Box>
+        <Button
+          aria-label="menu"
+          color="inherit"
+          aria-controls="profile-menu"
+          aria-haspopup="true"
+          onClick={handleClick4}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Avatar
+              src={userimg}
+              alt={userimg}
+              sx={{
+                width: "30px",
+                height: "30px",
+              }}
+            />
+          </Box>
+        </Button>
         <Menu
           id="profile-menu"
           anchorEl={anchorEl4}

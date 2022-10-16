@@ -1,6 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
-
 import {
   Card,
   CardContent,
@@ -24,19 +22,33 @@ import { Link } from "react-router-dom";
 
 const options = ["Action", "Another Action", "Something else here"];
 
-const getBackgroundColor = (status) => {
-  let color;
-  if (status === "Accepted") {
-      color = 'green';
-  } else if (status  === "Rejected") {
-      color = 'red';
-  } else if (status  === "Applied") {
-      color = 'orange';
-  } else if (status  === "Wishlist") {
-      color = 'green';
-  }
-  return color;
-};
+const applications = [
+  {
+    deadline: "October 20, 2022",
+    companyName: "Amazon",
+    companyLink: "www.amazon.com",
+  },
+  {
+    deadline: "October 20, 2022",
+    companyName: "Amazon",
+    companyLink: "www.amazon.com",
+  },
+  {
+    deadline: "October 20, 2022",
+    companyName: "Amazon",
+    companyLink: "www.amazon.com",
+  },
+  {
+    deadline: "October 20, 2022",
+    companyName: "Amazon",
+    companyLink: "www.amazon.com",
+  },
+  {
+    deadline: "October 20, 2022",
+    companyName: "Amazon",
+    companyLink: "www.amazon.com",
+  },
+];
 
 const DailyActivities = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -48,62 +60,6 @@ const DailyActivities = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const [applications, setdata] = useState(
-    [
-      {
-        companyName: "Amazon",
-        companyLink: "Amazon.com",
-        deadline: "October 22, 2022",
-        status: "Accepted"
-      },
-      {
-        
-        companyName: "Amazon",
-        companyLink: "Amazon.com",
-        deadline: "October 22, 2022",
-        status: "Rejected"
-      },
-      {
-        
-        companyName: "Amazon",
-        companyLink: "Amazon.com",
-        deadline: "October 22, 2022",
-        status: "Not Applied"
-      },
-      {
-        
-        companyName: "Amazon",
-        companyLink: "Amazon.com",
-        deadline: "October 22, 2022", 
-        status: "Accepted"
-      },
-    ]
-);
-
-fetch("/get_documents/email").then((res) =>
-        res.json().then((data) => {
-            // Setting a data from api
-            setdata(data["documents"]);
-        })
-    );
-  
-let filtered_applications = [];
-for (let i = 0; i < applications.length; i++) {
-  let row = applications[i];
-  if (row["datetime"] != null) {
-    filtered_applications.push(row);
-  }
-}
-
-console.log("filtered_applicatons")
-console.log(filtered_applications)
-
-const sorted_applications = filtered_applications.sort((a, b) => Date.parse(a["datetime"]) - Date.parse(b["datetime"]));
-
-console.log("sorted_applications")
-console.log(sorted_applications)
-
   return (
     <Card
       variant="outlined"
@@ -141,7 +97,13 @@ console.log(sorted_applications)
               marginLeft: "auto",
             }}
           >
-            
+            <IconButton
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MoreVertOutlinedIcon />
+            </IconButton>
             <Menu
               id="long-menu"
               MenuListProps={{
@@ -176,8 +138,8 @@ console.log(sorted_applications)
             p: 0,
           }}
         >
-          {sorted_applications.map((sorted_applications) => (
-            <TimelineItem key={sorted_applications.company_name}>
+          {applications.map((application) => (
+            <TimelineItem key={application.companyName}>
               <TimelineOppositeContent
                 sx={{
                   fontSize: "12px",
@@ -185,14 +147,13 @@ console.log(sorted_applications)
                   flex: "0",
                 }}
               >
-                {sorted_applications.datetime}
+                {application.deadline}
               </TimelineOppositeContent>
               <TimelineSeparator>
                 <TimelineDot
                   variant="outlined"
                   sx={{
-                    // borderColor: application.color,
-                    borderColor: getBackgroundColor(sorted_applications.status),
+                    borderColor: application.color,
                   }}
                 />
                 <TimelineConnector />
@@ -203,7 +164,7 @@ console.log(sorted_applications)
                   fontSize: "14px",
                 }}
               >
-                {sorted_applications.company_name}
+                {application.companyName}
               </TimelineContent>
               <TimelineContent
                 color="text.secondary"
@@ -213,7 +174,7 @@ console.log(sorted_applications)
               >
                 <Link to = '${application.companyLink}' > 
                   
-                   Link
+                   Go to application
                  
                 </Link>
                 
