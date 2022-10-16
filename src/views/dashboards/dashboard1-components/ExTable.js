@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import {
   Typography,
   Box,
@@ -10,36 +11,6 @@ import {
   Chip,
 } from "@material-ui/core";
 
-const applications = [
-  {
-    
-    companyName: "Amazon",
-    companyLink: "Amazon.com",
-    deadline: "October 22, 2022",
-    status: "Accepted"
-  },
-  {
-    
-    companyName: "Amazon",
-    companyLink: "Amazon.com",
-    deadline: "October 22, 2022",
-    status: "Rejected"
-  },
-  {
-    
-    companyName: "Amazon",
-    companyLink: "Amazon.com",
-    deadline: "October 22, 2022",
-    status: "Not Applied"
-  },
-  {
-    
-    companyName: "Amazon",
-    companyLink: "Amazon.com",
-    deadline: "October 22, 2022",
-    status: "Accepted"
-  },
-];
 const getBackgroundColor = (status) => {
   let color;
   if (status === "Accepted") {
@@ -55,6 +26,47 @@ const getBackgroundColor = (status) => {
 };
 
 const ExTable = () => {
+  const [applications, setdata] = useState(
+    [
+      {
+        companyName: "Amazon",
+        companyLink: "Amazon.com",
+        deadline: "October 22, 2022",
+        status: "Accepted"
+      },
+      {
+        
+        companyName: "Amazon",
+        companyLink: "Amazon.com",
+        deadline: "October 22, 2022",
+        status: "Rejected"
+      },
+      {
+        
+        companyName: "Amazon",
+        companyLink: "Amazon.com",
+        deadline: "October 22, 2022",
+        status: "Not Applied"
+      },
+      {
+        
+        companyName: "Amazon",
+        companyLink: "Amazon.com",
+        deadline: "October 22, 2022",
+        status: "Accepted"
+      },
+    ]
+);
+
+fetch("localhost:5000/get_documents/email").then((res) =>
+          res.json().then((data) => {
+              // Setting a data from api
+              setdata(data["documents"]);
+          })
+      );  
+
+console.log("my apps");
+console.log(applications);
   return (
     <Table
       aria-label="simple table"
@@ -105,7 +117,7 @@ const ExTable = () => {
                       fontWeight: "600",
                     }}
                   >
-                    {application.companyName}
+                    {application.company_name}
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -120,7 +132,7 @@ const ExTable = () => {
             </TableCell>
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                {application.companyLink}
+                {application.company_link}
               </Typography>
             </TableCell>
             <TableCell>
@@ -136,7 +148,7 @@ const ExTable = () => {
               ></Chip>
             </TableCell>
             <TableCell align="right">
-              <Typography variant="h6">{application.deadline}</Typography>
+              <Typography variant="h6">{application.datetime}</Typography>
             </TableCell>
           </TableRow>
         ))}
