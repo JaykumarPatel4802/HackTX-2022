@@ -10,6 +10,8 @@ import {
   TableRow,
   Chip,
 } from "@material-ui/core";
+import { async } from "q";
+import { getDateRangePickerDayUtilityClass } from "@material-ui/lab";
 
 const getBackgroundColor = (status) => {
   let color;
@@ -63,13 +65,21 @@ const ExTable = () => {
     ]
 );
 
-fetch("localhost:5000/get_documents/email").then((res) =>
+fetch("/get_documents/email").then((res) =>
           res.json().then((data) => {
               // Setting a data from api
               console.log(data);
               setdata(data);
           })
-      );  
+      );
+
+// const response = fetch("/get_document/email", {
+//   method: "POST",
+//   headers: {
+//   'Content-Type' : 'application/json'
+//   },
+//   body: JSON.stringify(todo)
+//   })
 
 console.log("my apps");
 console.log(applications);
