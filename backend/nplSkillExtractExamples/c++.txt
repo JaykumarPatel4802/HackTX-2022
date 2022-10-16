@@ -1,0 +1,1 @@
+Qualities that make great candidates: BS/MS/PhD in Computer Science, Engineering, Math, Physics or related fields Experience programming in C++ and distributed systems Ability to communicate with the team in a clean and concise way Passion for technology innovation and building systems from the ground up

@@ -5,6 +5,40 @@ import datetime
 from appwrite.client import Client
 from appwrite.services.databases import Databases
 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+from webdriver_manager.chrome import ChromeDriverManager
+
+from cohere import Client as cohereClient
+from cohere.classify import Example
+
+from os import listdir
+from os.path import isfile, join
+
+from re import compile
+
+from time import sleep
+
+pattern = compile(".+\.txt")
+
+
+co = cohereClient('dHlltzVIjybs4LkBx1STPBKLP21wcKCFODH2oXj9')
+
+classificationExFile = [f for f in listdir('./nplClassificationExamples') if isfile(join('./nplClassificationExamples', f)) and pattern.match(f)]
+classificationEx = []
+for fName in classificationExFile:
+    with open('./nplClassificationExamples/'+fName, "r+", encoding='utf-8') as f:
+        classificationEx.append(Example(f.read(), fName[:-5]))
+
+skillExtractExFile = [f for f in listdir('./nplSkillExtractExamples') if isfile(join('./nplSkillExtractExamples', f)) and pattern.match(f)]
+skillExtract = []
+for fName in skillExtractExFile:
+    with open('./nplSkillExtractExamples/'+fName, "r+", encoding='utf-8') as f:
+        skillExtract.append([f.read(), fName[:-4]])
+
 client = Client()
 
 (client
@@ -90,6 +124,79 @@ def update_document(email, document_id, status, datetime):
         result["datetime"] = temp
     return result
 
+@app.route('/suggestions/<email>', methods=['GET', 'POST'])
+def suggestions(email):
+    options = Options()
+    options.headless = True
+    options.add_argument("--window-size=1920,1200")
+
+    driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+    currentApps = databases.list_documents('634b048fa9574766567b', email)
+    urls = [apps["company_link"] for apps in currentApps["documents"] if apps["company_link"] == ""]
+    classificationData = []
+    for url in urls:
+        try:
+            driver.get(url)
+            sleep(2)
+            data = driver.find_element(By.TAG_NAME, value="body")
+            temp = data.text.split()
+            if len(temp) > 325:
+                temp = temp[100:325]
+            elif len(temp) > 225:
+                temp = temp[0:225]
+            classificationData.append(' '.join(temp))
+        except Exception:
+            pass
+
+    classifications = co.classify( #find job listings
+        model='medium',
+        inputs=classificationData,
+        examples=classificationEx
+    )
+
+    for item in classifications.classifications: #remove non job listings
+        if item.prediction == 'no':
+            classifications.classifications.remove(item)
+
+    skillExtractor = cohereExtractor([e[1] for e in skillExtract], 
+                                    [e[0] for e in skillExtract], [],
+                                    "", 
+                                    "extract the skills requirements of the post:")
+    
+    results = []
+    for text in classificationData:
+        try:
+            extracted_text = skillExtractor.extract(text)
+            results.append(extracted_text)
+        except Exception as e:
+            print('ERROR: ', e)
+
+    
+    
+class cohereExtractor():
+    def __init__(self, examples, example_labels, labels, task_desciption, example_prompt):
+        self.examples = examples
+        self.example_labels = example_labels
+        self.labels = labels
+        self.task_desciption = task_desciption
+        self.example_prompt = example_prompt
+
+    def make_prompt(self, example):
+        examples = self.examples + [example]
+        labels = self.example_labels + [""]
+        return (self.task_desciption +
+                "\n---\n".join( [examples[i] + "\n" +
+                                self.example_prompt + 
+                                 labels[i] for i in range(len(examples))]))
+
+    def extract(self, example):
+      extraction = co.generate(
+          model='medium',
+          prompt=self.make_prompt(example),
+          max_tokens=5
+          )
+      return(extraction.generations[0].text[:-1])
+            
 
 # Running app
 if __name__ == '__main__':
