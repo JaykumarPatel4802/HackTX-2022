@@ -4,6 +4,7 @@ import { Grid, Box } from "@material-ui/core";
 import {
   ProductPerformance,
   DailyActivities,
+  BlogCard,
 } from "./dashboard1-components";
 
 const Dashboard1 = () => {
@@ -18,6 +19,9 @@ const Dashboard1 = () => {
         </Grid>
         <Grid item xs={12} lg={8}>
           <ProductPerformance />
+        </Grid>
+        <Grid>
+          <BlogCard />
         </Grid>
         {/* ------------------------- row 3 ------------------------- */}
         

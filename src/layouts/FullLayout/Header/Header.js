@@ -73,7 +73,13 @@ const Header = (props) => {
   const sleep = ms => new Promise( resolve => setTimeout(resolve, ms) );
   const addDocument = () => {
     // handle api call
-    let post_url = "/create_document/email/"+name+"/"+status+"/"+link+"/"+datetime;
+    let post_url = ""
+    if ((datetime == "") || (datetime == null)) {
+      post_url = "/create_document/email/"+name+"/"+status+"/"+link+"/-"
+    }
+    else {
+      post_url = "/create_document/email/"+name+"/"+status+"/"+link+"/"+datetime;
+    }
     console.log("post_url");
     console.log(name);
     console.log(status);
@@ -160,6 +166,9 @@ const Header = (props) => {
                                 pr: (4),
                                 
                             }}>Add</Button>
+                            <Button onClick={() => handleClosepApplication()}>
+                              Close
+                            </Button>
 
                         </Grid>
                        

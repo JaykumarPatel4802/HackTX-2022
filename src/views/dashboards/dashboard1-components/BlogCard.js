@@ -8,23 +8,26 @@ import user3 from "../../../assets/images/backgrounds/u4.jpg";
 const blogs = [
   {
     img: user1,
-    title: "Super awesome, Angular 12 is coming soon!",
-    subtitle:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    title: "CS Careers Dev",
+    subtitle: "Find where companies are in their recruitment process!",
+    link:
+      "https://www.cscareers.dev/process-tracking/2023-summer-intern",
     btncolor: "error",
   },
   {
     img: user2,
-    title: "Super awesome, Angular 12 is coming soon!",
-    subtitle:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    title: "Levels Fyi",
+    subtitle: "Find what salaries companies are paying!",
+    link:
+      "https://www.levels.fyi/internships/",
     btncolor: "warning",
   },
   {
     img: user3,
-    title: "Super awesome, Angular 12 is coming soon!",
-    subtitle:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    title: "Summer 2023 Tech Internship - Pitt CSC",
+    subtitle: "Check out some of the most popular internships!",
+    link:
+      "https://github.com/pittcsc/Summer2023-Internships",
     btncolor: "primary",
   },
 ];
@@ -50,7 +53,7 @@ const BlogCard = () => {
               width: "100%",
             }}
           >
-            <img src={blog.img} alt="img" width="100%" />
+            {/* <img src={blog.img} alt="img" width="100%" /> */}
             <CardContent
               sx={{
                 paddingLeft: "30px",
@@ -81,8 +84,9 @@ const BlogCard = () => {
                   mt: "15px",
                 }}
                 color={blog.btncolor}
+                href={blog.link}
               >
-                Learn More
+                Access Site
               </Button>
             </CardContent>
           </Card>
