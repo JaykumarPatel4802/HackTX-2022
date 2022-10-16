@@ -105,3 +105,7 @@ dist
 
 build/
 yarn.lock
+
+*.pyc
+
+/backend/venv
