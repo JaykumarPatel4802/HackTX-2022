@@ -1,97 +1,220 @@
-# 🔖 Todo With React
+# [Argon Dashboard 2 MUI](http://demos.creative-tim.com/argon-dashboard-material-ui/?ref=readme-admui) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/argon-dashboard-material-ui&text=Check%20Argon%20Dashboard%20React%20made%20by%20@CreativeTim%20#webdesign%20#dashboard%20#argondesign%20#react%20https://www.creative-tim.com/product/argon-dashboard-material-ui)
 
-![Easter Eggs Claimed](https://img.shields.io/github/issues-pr-closed-raw/appwrite/todo-with-react/easter-egg?label=Easter%20Eggs%20Claimed&style=flat-square&logo=data:image/png;base64,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)
+![version](https://img.shields.io/badge/version-3.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/argon-dashboard-material-ui.svg)](https://github.com/creativetimofficial/argon-dashboard-material-ui/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/argon-dashboard-material-ui.svg)](https://github.com/creativetimofficial/argon-dashboard-material-ui/issues?q=is%3Aissue+is%3Aclosed)
 
-A simple todo app built with Appwrite and React
+![Image](https://s3.amazonaws.com/creativetim_bucket/products/447/original/argon-dashboard-material-ui.jpg)
 
-If you simply want to try out the App, go ahead and check out the demo at https://appwrite-todo-with-react.vercel.app
+Start your Development with an Innovative Admin Template for MUI and React. If you like the look & feel of the hottest design trend right now, Argon, you will fall in love with this dashboard! It features a huge number of components built to fit together and look amazing.
 
+**Fully Coded Elements**
 
-## 🎬 Getting Started
+Argon Dashboard 2 MUI is built with over 70 frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using MUI styled api and sx prop. You will save a lot of time going from prototyping to full-functional code because all elements are implemented. This Free MUI Dashboard is coming with prebuilt design blocks, so the development process is seamless, switching from our pages to the real website is very easy to be done.
 
-### 🤘 Install Appwrite 
-Follow our simple [Installation Guide](https://appwrite.io/docs/installation) to get Appwrite up and running in no time. You can either deploy Appwrite on your local machine or, on any cloud provider of your choice. 
+View [all components here](https://www.creative-tim.com/learning-lab/material-ui/alerts/argon-dashboard/).
 
-> Note: If you setup Appwrite on your local machine, you will need to create a public IP so that your hosted frontend can access it.
-  
-We need to make a few configuration changes to your Appwrite server. 
+**Documentation built by Developers**
 
-1. Add a new Web App in Appwrite and enter the endpoint of your website (`localhost, <project-name>.vercel.app etc`)
-![Create Web App](https://user-images.githubusercontent.com/20852629/113019434-3c27c900-919f-11eb-997c-1da5a8303ceb.png)
+Each element is well presented in very complex documentation.
 
-2. Create a new collection with the following properties
-* **Attributes**
-* 
-Add the following attributes to the collection. 
-> Make sure that your Attribute ID exactly matches the key in the images
+You can read more about the [documentation here](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/).
 
-<p align="center">
-  <img width="744" alt="Content Attribute" src="https://user-images.githubusercontent.com/29069505/155617343-6ff674b3-9809-42ac-8175-0f76271b1189.png">
-</p>
+**Example Pages**
 
-<p align="center">
-  <img width="744" alt="IsComplete Attribute" src="https://user-images.githubusercontent.com/29069505/155617393-f30270af-aa07-4392-a7b2-75b8ce9c60da.png">
-</p>
+If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. Every page is spaced well, with attractive layouts and pleasing shapes. Argon Dashboard 2 MUI has everything you need to quickly set up an amazing project.
 
-* **Permissions**
+View [example pages here](https://demos.creative-tim.com/argon-dashboard-material-ui/).
 
-Add the following permissions to your collections. These permissions ensure that only registered users can access the collection.
+**HELPFUL LINKS**
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/20852629/113019801-99bc1580-919f-11eb-9a94-13b1529cb925.png" alt="Collection Permissions" width="400"/>
-</p>
+- View [Github Repository](https://github.com/creativetimofficial/argon-dashboard-material-ui)
+- Check [FAQ Page](https://www.creative-tim.com/faq)
 
-### 🚀 Deploy the Front End
-You have two options to deploy the front-end and we will cover both of them here. In either case, you will need to fill in these environment variables that help your frontend connect to Appwrite.
+#### Special thanks
 
-* REACT_APP_ENDPOINT - Your Appwrite endpoint
-* REACT_APP_PROJECT - Your Appwrite project ID
-* REACT_APP_COLLECTION_ID - Your Appwrite collection ID 
+During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
 
-### **Deploy to a Static Hosting Provider**
+- [MUI](https://mui.com/) - The React UI library for faster and easier web development.
+- [React Countup](https://github.com/glennreyes/react-countup) - A lightweight React component that can be used to quickly create animations that display numerical data in a more interesting way.
+- [React ChartJS 2](http://reactchartjs.github.io/react-chartjs-2/#/) - Simple yet flexible React charting for designers & developers.
+- [ChromaJS](https://gka.github.io/chroma.js/) - A small-ish zero-dependency JavaScript library for all kinds of color conversions and color scales.
+- [UUID](https://github.com/uuidjs/uuid) - JavaScript library for generating random id numbers.
 
-Use the following buttons to deploy to your favourite hosting provider in one click! We support Vercel, Netlify and DigitalOcean. You will need to enter the environment variables above when prompted.
+Let us know your thoughts below. And good luck with development!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fappwrite%2Ftodo-with-react&env=REACT_APP_COLLECTION_ID,REACT_APP_PROJECT,REACT_APP_ENDPOINT&envDescription=Your%20Appwrite%20Endpoint%2C%20Project%20ID%20and%20Collection%20ID%20)
+## Table of Contents
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/appwrite/demo-todo-with-react)
+- [Versions](#versions)
+- [Demo](#demo)
+- [Quick Start](#quick-start)
+- [Documentation](#documentation)
+- [File Structure](#file-structure)
+- [Browser Support](#browser-support)
+- [Resources](#resources)
+- [Reporting Issues](#reporting-issues)
+- [Technical Support or Questions](#technical-support-or-questions)
+- [Licensing](#licensing)
+- [Useful Links](#useful-links)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/appwrite/todo-with-react)
+## Versions
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/appwrite/todo-with-react/tree/main)
+[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/argon-dashboard-material-ui?ref=readme-admui)
 
+| React |
+| ----- |
 
-### **Run locally**
+| [![Argon Dashboard 2 MUI](https://s3.amazonaws.com/creativetim_bucket/products/447/thumb/argon-dashboard-material-ui.jpg)](http://demos.creative-tim.com/argon-dashboard-material-ui/?ref=readme-admui)
 
-Follow these instructions to run the demo app locally
+## Demo
 
-```sh
-$ git clone https://github.com/appwrite/todo-with-react
-$ cd todo-with-react
+- [Dashboard](http://demos.creative-tim.com/argon-dashboard-material-ui/#/dashboard?ref=readme-admui)
+- [Profile](https://demos.creative-tim.com/argon-dashboard-material-ui/#/profile?ref=readme-admui)
+- [RTL](https://demos.creative-tim.com/argon-dashboard-material-ui/#/rtl?ref=readme-admui)
+- [Sign In](https://demos.creative-tim.com/argon-dashboard-material-ui/#/authentication/sign-in?ref=readme-admui)
+- [Sign Up](https://demos.creative-tim.com/argon-dashboard-material-ui/#/authentication/sign-up?ref=readme-admui)
+
+[View More](https://demos.creative-tim.com/argon-dashboard-material-ui/#/dashboard?ref=readme-admui).
+
+## Quick start
+
+Quick start options:
+
+- Buy from [Creative Tim](https://www.creative-tim.com/product/argon-dashboard-material-ui?ref=readme-admui).
+
+## Terminal Commands
+
+1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
+2. Navigate to the root ./ directory of the product and run `yarn install` or `npm install` to install our local dependencies.
+
+## Documentation
+
+The documentation for the Argon Dashboard 2 MUI is hosted at our [website](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/?ref=readme-admui).
+
+### What's included
+
+Within the download you'll find the following directories and files:
+
+```
+argon-dashboard-material-ui
+    ├── public
+    │   ├── apple-icon.png
+    │   ├── favicon.png
+    │   ├── index.html
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src
+    │   ├── assets
+    │   │   ├── css
+    │   │   ├── fonts
+    │   │   ├── images
+    │   │   ├── theme
+    │   │   │   ├── base
+    │   │   │   ├── components
+    │   │   │   ├── functions
+    │   │   │   ├── index.js
+    │   │   │   └── theme-rtl.js
+    │   │   └── theme-dark
+    │   │       ├── base
+    │   │       ├── components
+    │   │       ├── functions
+    │   │       ├── index.js
+    │   │       └── theme-rtl.js
+    │   ├── components
+    │   │   ├── ArgonAlert
+    │   │   ├── ArgonAvatar
+    │   │   ├── ArgonBadge
+    │   │   ├── ArgonBox
+    │   │   ├── ArgonButton
+    │   │   ├── ArgonInput
+    │   │   ├── ArgonPagination
+    │   │   ├── ArgonProgress
+    │   │   └── ArgonTypography
+    │   ├── context
+    │   ├── examples
+    │   │   ├── Breadcrumbs
+    │   │   ├── Calendar
+    │   │   ├── Cards
+    │   │   ├── Charts
+    │   │   ├── Configurator
+    │   │   ├── Footer
+    │   │   ├── Items
+    │   │   ├── LayoutContainers
+    │   │   ├── Lists
+    │   │   ├── Navbars
+    │   │   ├── Sidenav
+    │   │   ├── Tables
+    │   │   └── Timeline
+    │   ├── layouts
+    │   │   ├── authentication
+    │   │   ├── billing
+    │   │   ├── dashboard
+    │   │   ├── profile
+    │   │   ├── rtl
+    │   │   ├── tables
+    │   │   └── virtual-reality
+    │   ├── App.js
+    │   ├── index.js
+    │   └── routes.js
+    ├── .evn
+    ├── .eslintrc.json
+    ├── .gitignore
+    ├── .prettierrc.json
+    ├── CHANGELOG.md
+    ├── ISSUE_TEMPLATE.md
+    ├── jsconfig.json
+    ├── package.json
+    └── README.md
 ```
 
-Run the following command to generate your `.env` vars
+## Browser Support
 
-```sh
-$ cp .env.example .env
-```
+At present, we officially aim to support the last two versions of the following browsers:
 
-Now fill in the envrionment variables we discussed above in your `.env`
+<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
 
-Now run the following commands and you should be good to go 💪🏼
+## Resources
 
-```
-$ npm install
-$ npm start
-```
+- [Live Preview](https://demos.creative-tim.com/argon-dashboard-material-ui/#/dashboard?ref=readme-admui)
+- [Download Page](https://www.creative-tim.com/product/argon-dashboard-material-ui?ref=readme-admui)
+- Documentation is [here](https://www.creative-tim.com/learning-lab/material-ui/overview/argon-dashboard/?ref=readme-admui)
+- [License Agreement](https://www.creative-tim.com/license?ref=readme-admui)
+- [Support](https://www.creative-tim.com/contact-us?ref=readme-admui)
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/argon-dashboard-material-ui/issues)
 
-## 🤕 Support
+## Reporting Issues
 
-If you get stuck anywhere, hop onto one of our [support channels in discord](https://appwrite.io/discord) and we'd be delighted to help you out 🤝
+We use GitHub Issues as the official bug tracker for the Argon Dashboard 2 MUI. Here are some advices for our users that want to report an issue:
 
-## 😧 Help Wanted 
-Our access credentials were recently compromised and someone tried to ruin these demos. They decided to leave behind 15 easter eggs 🥚 for you to discover. If you find them, submit a PR cleaning up that section of the code (One PR per person across all the repos). You can track the number of claimed Easter Eggs using the badge at the top.
+1. Make sure that you are using the latest version of the Argon Dashboard 2 MUI. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/argon-dashboard-material-ui?ref=readme-admui).
+2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
+3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
-The first 15 people to get their PRs merged will receive some Appwrite Swags 🤩 . Just head over to our [Discord channel](https://appwrite.io/discord) and share your PR link with us.  
+## Technical Support or Questions
 
-> *UPDATE **17-11-2021**:* The easter egg contest is now closed. 
+If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-admui) instead of opening an issue.
+
+## Licensing
+
+- Copyright 2022 [Creative Tim](https://www.creative-tim.com?ref=readme-admui)
+- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-admui)
+
+## Useful Links
+
+- [More products](https://www.creative-tim.com/templates?ref=readme-admui) from Creative Tim
+
+- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
+
+- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-admui) from Creative Tim
+
+- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-admui) (earn money)
+
+##### Social Media
+
+Twitter: <https://twitter.com/CreativeTim>
+
+Facebook: <https://www.facebook.com/CreativeTim>
+
+Dribbble: <https://dribbble.com/creativetim>
+
+Google+: <https://plus.google.com/+CreativetimPage>
+
+Instagram: <https://instagram.com/creativetimofficial>
