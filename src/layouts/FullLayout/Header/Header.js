@@ -215,15 +215,15 @@ const Header = (props) => {
         {/* ------------------------------------------- */}
         {/* Profile Dropdown */}
         {/* ------------------------------------------- */}
-        <Box
+        {/* <Box
           sx={{
             width: "1px",
             backgroundColor: "rgba(0,0,0,0.1)",
             height: "25px",
             ml: 1,
           }}
-        ></Box>
-        <Button
+        ></Box> */}
+        {/* <Button
           aria-label="menu"
           color="inherit"
           aria-controls="profile-menu"
@@ -245,7 +245,7 @@ const Header = (props) => {
               }}
             />
           </Box>
-        </Button>
+        </Button> */}
         <Menu
           id="profile-menu"
           anchorEl={anchorEl4}

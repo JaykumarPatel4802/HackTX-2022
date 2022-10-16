@@ -32,8 +32,12 @@ const getBackgroundColor = (status) => {
       color = 'red';
   } else if (status  === "Applied") {
       color = 'orange';
-  } else if (status  === "Wishlist") {
-      color = 'green';
+  } else if (status  === "Not Applied") {
+      color = 'gray';
+  } else if(status === "OA"){
+    color = 'purple'
+  }else if(status === "Offer"){
+    color = 'blue'
   }
   return color;
 };
@@ -141,14 +145,14 @@ console.log(sorted_applications)
               marginLeft: "auto",
             }}
           >
-            <IconButton
+            {/* <IconButton
               aria-expanded={open ? "true" : undefined}
               aria-haspopup="true"
               onClick={handleClick}
             >
               <MoreVertOutlinedIcon />
-            </IconButton>
-            <Menu
+            </IconButton> */}
+            {/* <Menu
               id="long-menu"
               MenuListProps={{
                 "aria-labelledby": "long-button",
@@ -174,7 +178,7 @@ console.log(sorted_applications)
                   {option}
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Box>
         <Timeline

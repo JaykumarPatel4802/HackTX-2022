@@ -21,8 +21,12 @@ const getBackgroundColor = (status) => {
       color = 'red';
   } else if (status  === "Applied") {
       color = 'orange';
-  } else if (status  === "Wishlist") {
-      color = 'green';
+  } else if (status  === "Not Applied") {
+      color = 'gray';
+  } else if(status === "OA"){
+    color = 'purple'
+  }else if(status === "Offer"){
+    color = 'blue'
   }
   return color;
 };
