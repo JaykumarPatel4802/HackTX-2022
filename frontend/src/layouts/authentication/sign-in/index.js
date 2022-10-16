@@ -37,6 +37,8 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { BrowserRouter} from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
+import api from "../../../api/api"
+import { FetchState } from "../../../hooks";
 
 // Image
 const bgImage =
@@ -61,16 +63,20 @@ function Illustration() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    dispatch({ type: FetchState.FETCH_INIT });
+    // dispatch({ type: FetchState.FETCH_INIT });
     try {
-      await api.createSession(email, password);
+      await api.createSession(userName, passWord);
       const data = await api.getAccount();
-      dispatch({ type: FetchState.FETCH_SUCCESS, payload: data });
+      navigate('/dashboard', {
+        state: {
+          user_data: data
+        }
+      });
+      // dispatch({ type: FetchState.FETCH_SUCCESS, payload: data });
     } catch (e) {
-      dispatch({ type: FetchState.FETCH_FAILURE });
+      // dispatch({ type: FetchState.FETCH_FAILURE });
+      console.log("error");
     }
-    console.log(data);
-    navigate('/dashboard');
   };
 
   return (

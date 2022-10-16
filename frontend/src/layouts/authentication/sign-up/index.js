@@ -30,12 +30,37 @@ import ArgonButton from "components/ArgonButton";
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 import Socials from "layouts/authentication/components/Socials";
 import Separator from "layouts/authentication/components/Separator";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import api from "../../../api/api";
 
 // Images
 const bgImage =
   "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg";
 
 function Cover() {
+
+  const [userName, setUsername] = useState("");
+  const [passWord, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+    // e.preventDefault();
+    // dispatch({ type: FetchState.FETCH_INIT });
+    try {
+      console.log(userName);
+      const user = await api.createAccount(userName, passWord, name);
+      console.log(passWord);
+      await api.createSession(userName, passWord);
+      navigate("/sign-in")
+      // dispatch({ type: FetchState.FETCH_SUCCESS, payload: user });
+    } catch (e) {
+      console.log("broke somewhere");
+      // dispatch({ type: FetchState.FETCH_FAILURE }); 
+    }
+  };
+
   return (
     <CoverLayout
       title="Welcome!"
@@ -59,13 +84,13 @@ function Cover() {
         <ArgonBox pt={2} pb={3} px={3}>
           <ArgonBox component="form" role="form">
             <ArgonBox mb={2}>
-              <ArgonInput placeholder="Name" />
+              <ArgonInput placeholder="Name" onChange={(e) => setName(e.target.value)}/>
             </ArgonBox>
             <ArgonBox mb={2}>
-              <ArgonInput type="email" placeholder="Email" />
+              <ArgonInput type="email" placeholder="Email" onChange={(e) => setUsername(e.target.value)}/>
             </ArgonBox>
             <ArgonBox mb={2}>
-              <ArgonInput type="password" placeholder="Password" />
+              <ArgonInput type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
             </ArgonBox>
             <ArgonBox display="flex" alignItems="center">
               <Checkbox defaultChecked />
@@ -87,7 +112,7 @@ function Cover() {
               </ArgonTypography>
             </ArgonBox>
             <ArgonBox mt={4} mb={1}>
-              <ArgonButton variant="gradient" color="dark" fullWidth>
+              <ArgonButton variant="gradient" color="dark" fullWidth onClick={(e) => handleSignup(e)}>
                 sign up
               </ArgonButton>
             </ArgonBox>
