@@ -67,11 +67,8 @@ function Illustration() {
     try {
       await api.createSession(userName, passWord);
       const data = await api.getAccount();
-      navigate('/dashboard', {
-        state: {
-          user_data: data
-        }
-      });
+      console.log(data);
+      navigate('/dashboard');
       // dispatch({ type: FetchState.FETCH_SUCCESS, payload: data });
     } catch (e) {
       // dispatch({ type: FetchState.FETCH_FAILURE });

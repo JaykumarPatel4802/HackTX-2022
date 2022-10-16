@@ -44,6 +44,7 @@ import categoriesListData from "layouts/dashboard/data/categoriesListData";
 
 function Default() {
   const { size } = typography;
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -82,9 +83,9 @@ function Default() {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={3} mb={3}>
-          <Grid item xs={12} lg={7}>
-            <GradientLineChart
+        {/* <Grid container spacing={3} mb={3}> */}
+          {/* <Grid item xs={12} lg={7}> */}
+            {/* <GradientLineChart
               title="Sales Overview"
               description={
                 <ArgonBox display="flex" alignItems="center">
@@ -97,15 +98,13 @@ function Default() {
                       in 2022
                     </ArgonTypography>
                   </ArgonTypography>
-                </ArgonBox>
+                </ArgonBox>/
               }
               chart={gradientLineChartData}
-            />
-          </Grid>
-          <Grid item xs={12} lg={5}>
-            <Slider />
-          </Grid>
-        </Grid>
+            /> */}
+            <SalesTable title="Sales by Country" style={{'margin-top': 20}} display="flex" alignItems="center" rows={salesTableData} />
+          {/* </Grid> */}
+        {/* </Grid> */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <SalesTable title="Sales by Country" rows={salesTableData} />
