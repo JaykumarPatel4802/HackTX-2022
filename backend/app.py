@@ -70,6 +70,10 @@ def create_document(email, company, status, url, datetime):
     return result
 
 # get collection i.e. list documents
+@app.route('/get_documents/<email>', methods=['GET', 'POST'])
+def get_documents(email):
+    result = databases.list_documents('634b048fa9574766567b', email)
+    return result
 
 # update document
 @app.route('/update_document/<email>/<document_id>/<status>/<datetime>', methods=['GET', 'POST'])
